@@ -5,29 +5,31 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/1")
+@RequestMapping("/" + FirstController.ROOT)
 @SessionAttributes({"name", "amount"})
 public class FirstController {
 
+    public static final String ROOT = "1";
+
     @RequestMapping(method = RequestMethod.GET)
     public String hi() {
-        return "/1/hi";
+        return ROOT + "/hi";
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public String myName(@RequestParam("name") String name, ModelMap model) {
         model.put("name", name);
-        return "/1/apple";
+        return ROOT + "/apple";
     }
 
     @RequestMapping(value = "yes")
     public String yes() {
-        return "/1/howmuch";
+        return ROOT + "/howmuch";
     }
 
     @RequestMapping(value = "no")
     public String no() {
-        return "/1/summary";
+        return ROOT + "/summary";
     }
 
     @ModelAttribute("amount")
@@ -39,6 +41,6 @@ public class FirstController {
     public String howMuch(@RequestParam("amount") int amount, ModelMap model) {
         Integer previousAmount = (Integer) model.get("amount");
         model.put("amount", previousAmount + amount);
-        return "/1/apple";
+        return ROOT + "/apple";
     }
 }

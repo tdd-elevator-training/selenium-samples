@@ -5,9 +5,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/" + FirstController.ROOT)
+@RequestMapping("/" + Controller1.ROOT)
 @SessionAttributes({"name", "amount"})
-public class FirstController {
+public class Controller1 {
 
     public static final String ROOT = "1";
 

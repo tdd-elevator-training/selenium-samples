@@ -17,7 +17,7 @@
     <mvc:annotation-driven/>
 
 
-    <!--<mvc:resources mapping="/resources/**" location="/resources/" />-->
+    <mvc:resources mapping="/assets/**" location="/assets/" />
     <!--<mvc:resources mapping="/favicon.ico" location="/favicon.ico" />-->
     <!--View resolvers-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

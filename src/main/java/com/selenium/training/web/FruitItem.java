@@ -1,11 +1,13 @@
 package com.selenium.training.web;
 
+import java.io.Serializable;
+
 /**
  * User: serhiy.zelenin
  * Date: 6/14/12
  * Time: 5:36 PM
  */
-public class FruitItem {
+public class FruitItem implements Serializable {
     private String name;
     private int amount;
 

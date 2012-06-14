@@ -43,6 +43,8 @@ public class Controller2 {
                 }
                 totals.put(item.getName(), value + item.getAmount());
             }
+            System.out.println("selection, items size = " + items.size());
+            System.out.println("selection, totals size = " + totals.size());
             model.put("totals", totals);
             return ROOT + "/summary";
         }
@@ -56,6 +58,7 @@ public class Controller2 {
     @RequestMapping(value = "howmuch", method = RequestMethod.POST)
     public String howMuch(@RequestParam("fruit") String fruit, @RequestParam("amount") int amount, ModelMap model) {
         List<FruitItem> items = getItems(model);
+        System.out.println("howmuch, items size = " + items.size());
         items.add(new FruitItem(fruit, amount));
         model.put("items", items);
         return ROOT + "/apple";

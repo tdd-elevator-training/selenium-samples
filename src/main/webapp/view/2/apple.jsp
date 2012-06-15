@@ -1,5 +1,10 @@
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Arrays" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
     <title>Чего хотите?</title>
@@ -7,17 +12,21 @@
 </head>
 <body>
 <form class="well-large" action="/2/selection" method="POST" id="fruit_form" name="form">
-    <h4>Здравствуйте, ${name}!</h4>
+    <h4><spring:message code="sample2.hello"/> , ${name}!</h4>
     <br/>
-    Хотите
+    <spring:message code="sample2.doYouWant"/>
+    <%
+        List<String> array = Arrays.asList("apples", "pears", "tomatos");
+        pageContext.setAttribute("fruits", array);
+    %>
     <select name="fruit" id="fruit_id">
-        <option value="яблок">яблок</option>
-        <option value="груш">груш</option>
-        <option value="помидор">помидор</option>
+        <c:forEach items="${fruits}" var="fruit">
+            <option value="${fruit}"><spring:message code="${fruit}"/> </option>
+        </c:forEach>
     </select> ?
     <div class="form-actions">
-        <input type="submit" class="btn btn-primary" value="Да, очень хочу" id="fruit_yes_btn" name="yes">
-        <input type="submit" class="btn" value="Нет, спасибо" id="fruit_no_btn" name="no">
+        <input type="submit" class="btn btn-primary" value="<spring:message code="sample2.yesVeryMuch"/>" id="fruit_yes_btn" name="yes">
+        <input type="submit" class="btn" value="<spring:message code="sample2.noThanks"/>" id="fruit_no_btn" name="no">
     </div>
 </form>
 </body>

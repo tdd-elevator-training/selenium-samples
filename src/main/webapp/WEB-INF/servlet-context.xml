@@ -8,6 +8,28 @@
 			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
 			http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
 
+    <bean id="localeResolver"
+          class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+        <property name="defaultLocale" value="ru"/>
+    </bean>
+
+    <bean id="localeChangeInterceptor"
+          class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+        <property name="paramName" value="language"/>
+    </bean>
+
+    <mvc:interceptors>
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+            <property name="paramName" value="locale"/>
+        </bean>
+    </mvc:interceptors>
+
+    <!-- Register the welcome.properties -->
+    <bean id="messageSource"
+          class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="messages"/>
+    </bean>
+
     <context:annotation-config/>
 
     <!--Enables autodetection of the annotated controllers-->
@@ -17,7 +39,7 @@
     <mvc:annotation-driven/>
 
 
-    <mvc:resources mapping="/assets/**" location="/assets/" />
+    <mvc:resources mapping="/assets/**" location="/assets/"/>
     <!--<mvc:resources mapping="/favicon.ico" location="/favicon.ico" />-->
     <!--View resolvers-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

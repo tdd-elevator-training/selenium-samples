@@ -24,6 +24,7 @@ public class Controller2 {
 
     @RequestMapping(method = RequestMethod.POST)
     public String myName(@RequestParam("name") String name, ModelMap model) {
+        model.put("items", defaultItems());
         model.put("name", name);
         return ROOT + "/apple";
     }

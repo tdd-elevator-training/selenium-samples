@@ -12,9 +12,9 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>#</th>
-            <th><spring:message code="sample2.whatDidYouWant"/></th>
-            <th><spring:message code="sample2.howMuchDidYouWant"/></th>
+            <th id="header1">#</th>
+            <th id="header2"><spring:message code="sample2.whatDidYouWant"/></th>
+            <th id="totalColumn"><spring:message code="sample2.howMuchDidYouWant"/></th>
         </tr>
         </thead>
         <c:forEach items="${items}" var="item" varStatus="status">
@@ -22,6 +22,7 @@
                 <td>${status.index + 1}</td>
                 <td><spring:message code="${item.name}"/></td>
                 <td>${item.amount}</td>
+
             </tr>
         </c:forEach>
     </table>

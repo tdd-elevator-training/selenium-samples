@@ -7,9 +7,9 @@
     <link href="/assets/css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
-<form class="well-large" action="" method="POST">
+<form class="well-large" action="" method="POST" name="hiform">
     <label><spring:message code="sample2.whatIsYourName"/></label>
-    <input class="span3" name="name" placeholder="<spring:message code="sample2.enterYourName"/>"/>
+    <input class="span3" name="name" id="userName" placeholder="<spring:message code="sample2.enterYourName"/>"/>
     <input type="submit" class="btn" value="<spring:message code="sample2.save"/>"/>
 </form>
 </body>

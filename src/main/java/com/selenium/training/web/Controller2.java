@@ -35,18 +35,27 @@ public class Controller2 {
             model.put("fruit", fruit);
             return ROOT + "/howmuch";
         } else {
-            List<FruitItem> items = getItems(model);
-            Map<String, Integer> totals = new HashMap<String, Integer>();
-            for (FruitItem item : items) {
-                Integer value = totals.get(item.getName());
-                if (value == null) {
-                    value = 0;
-                }
-                totals.put(item.getName(), value + item.getAmount());
-            }
-            model.put("totals", totals);
-            return ROOT + "/summary";
+            return calculateTotal(model);
         }
+    }
+
+    @RequestMapping(value = "viewcart")
+    public String viewCart(ModelMap model) {
+        return calculateTotal(model);
+    }
+
+    private String calculateTotal(ModelMap model) {
+        List<FruitItem> items = getItems(model);
+        Map<String, Integer> totals = new HashMap<String, Integer>();
+        for (FruitItem item : items) {
+            Integer value = totals.get(item.getName());
+            if (value == null) {
+                value = 0;
+            }
+            totals.put(item.getName(), value + item.getAmount());
+        }
+        model.put("totals", totals);
+        return ROOT + "/summary";
     }
 
     @ModelAttribute("items")
